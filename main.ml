@@ -9,13 +9,13 @@ let main () = let cfg = [] in
               let four = Z3.Arithmetic.Integer.mk_numeral_i ctx 4 in
               (* let x = (Z3.Symbol.mk_string ctx "x") in *)
               (* let x =  Z3.Arithmetic.Integer.mk_const_s ctx "x" in *)
-              let c = Z3.Arithmetic.mk_ge ctx three x in
+              (* let c = Z3.Arithmetic.mk_ge ctx three x in *)
               let intsort = Z3.Arithmetic.Integer.mk_sort ctx in 
               let f =  Z3.Z3Array.mk_const_s ctx "f" intsort intsort in (* make new array *)
               let c' = Z3.Arithmetic.mk_ge ctx (Z3.Z3Array.mk_select ctx f three) three in
               let c'' = Z3.Arithmetic.mk_ge ctx (Z3.Z3Array.mk_select ctx f four) four in
               (* let () = Z3.Goal.add g [c ; c' ; c'' ] in *)
-              let () = Z3.Solver.add solver [c ; c' ; c''] in
+              let () = Z3.Solver.add solver [c' ; c''] in
               match Z3.Solver.check solver [] with
                      | Z3.Solver.UNKNOWN -> ()
                      | Z3.Solver.UNSATISFIABLE -> ()
@@ -34,7 +34,7 @@ let main () = let cfg = [] in
 
                                            ()
 
-                                           (*
+                                           (* 
                                            let r = (Z3.FuncDecl.get_range f_decl) in 
                                            Printf.printf "range: %s\n" (Z3.Sort.to_string r);
                                            let _ = Z3.Sort.get_sort_kind  r in
