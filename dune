@@ -1,0 +1,6 @@
+( executable
+  (name main)
+  (libraries z3 core_kernel ppx_jane)
+  ;; (c_flags (:include -lstdc++))
+  (preprocess (pps ppx_jane))
+  )
