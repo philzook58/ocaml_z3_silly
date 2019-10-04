@@ -1,6 +1,6 @@
 # ocaml_z3_silly
 
-`dune exec ./main.ml`
+`dune exec ./main.exe`
 
 Gaving difficulty getting the model out of an arrya
 
